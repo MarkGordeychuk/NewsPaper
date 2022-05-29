@@ -1,0 +1,24 @@
+{% extends 'flatpages/default.html' %}
+
+{% load cache %}
+{% load custom_filters %}
+
+{% block title %}
+NewsPaper
+{% endblock title %}
+
+{% block content %}
+{% cache 60 index %}
+<h1><a href="/news/">News</a></h1>
+<h1><a href="/papers/">Papers</a></h1>
+{% endcache %}
+<p>
+  {% if request.user.is_authenticated %}
+    Вы вошли как <a href="{% url 'accounts' request.user.pk %}">{{ request.user.username }}</a>.
+    <a href="/accounts/logout/?next=/">Выйти</a>
+  {% else %}
+    <a href="/accounts/login/?next=/">Войти</a>
+    <a href="/accounts/signup/?next=/">Зарегистрироваться</a>
+  {% endif %}
+</p>
+{% endblock content %}

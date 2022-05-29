@@ -1,0 +1,15 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+Удаление
+{% endblock title %}
+
+{% block content %}
+  <form action="" method="post" class="mb-3">
+    {% csrf_token %}
+    <p>Удаляем "{{ object.title }}"?</p>
+    <input type="submit" value="Удалить" />
+  </form>
+{% endblock content %}

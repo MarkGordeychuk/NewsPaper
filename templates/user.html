@@ -1,0 +1,47 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+{{ user.username }}
+{% endblock title %}
+
+{% block content %}
+  <table class="text-start mb-5">
+    <tr><td>
+      {% if is_author %}<strong>Автор</strong>{% endif %}
+      {{ user.username }}
+    </td></tr>
+    <tr>
+      <td>Имя:</td>
+      <td>{{ user.first_name }}</td>
+    </tr>
+    <tr>
+      <td>Фамилия:</td>
+      <td>{{ user.last_name }}</td>
+    </tr>
+  </table>
+  {% if is_current_user %}
+    <form method="post" action="{% url 'news_subscribe_category' %}" >
+      {% csrf_token %}
+      <p class="text-start">{{ subscribe_form }}</p>
+      <p class="text-start mb-5"><input type="submit" value="Изменить"></p>
+    </form>
+    {% if is_author %}
+      <p class="text-start">
+        <a href="{% url 'news_ne_create' %}"><button>Создать новость</button></a>
+        <a href="{% url 'news_pa_create' %}"><button>Создать статью</button></a>
+      </p>
+    {% else %}
+      <form class="text-start" method="post" action="{% url 'account_become_author' %}">
+        {% csrf_token %}
+        <input type="submit" value="Стать автором">
+      </form>
+    {% endif %}
+    <p class="text-start">
+      <a href="{% url 'accounts_update' user.pk %}">Изменить</a>
+      <a href="{% url 'account_change_password' %}">Сменить пароль</a>
+      <a href="{% url 'account_logout' %}?next={{ request.path }}">Выйти</a>
+    </p>
+  {% endif %}
+{% endblock content %}
