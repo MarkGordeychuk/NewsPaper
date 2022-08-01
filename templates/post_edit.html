@@ -1,15 +1,16 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
-Редактирование
+{% trans 'Editing' %}
 {% endblock title %}
 
 {% block content %}
   <form action="" method="post" class="mb-3">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Save" />
+    <input type="submit" value="{% trans 'Save' %}" />
   </form>
 {% endblock content %}

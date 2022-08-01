@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-14 20:00+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
+"100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\news\filters.py:11 .\news\forms.py:23
+msgid "Title"
+msgstr "Название"
+
+#: .\news\filters.py:16 .\news\forms.py:22
+msgid "Category"
+msgstr "Категория"
+
+#: .\news\filters.py:22
+msgid "Date in"
+msgstr "Дата от"
+
+#: .\news\forms.py:24
+msgid "Content"
+msgstr "Содержание"
+
+#: .\news\forms.py:29
+msgid "Subscribes"
+msgstr "Подписки"
+
+#: .\templates\flatpages\default.html:38 .\templates\index.html:21
+msgid "Log In"
+msgstr "Войти"
+
+#: .\templates\index.html:18
+msgid "You are logged in as"
+msgstr "Вы вошли как"
+
+#: .\templates\index.html:19 .\templates\user.html:45
+msgid "Log Out"
+msgstr "Выйти"
+
+#: .\templates\index.html:22
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+#: .\templates\news.html:14
+msgid "Search"
+msgstr "Найти"
+
+#: .\templates\news.html:22
+msgid "Read"
+msgstr "Читать"
+
+#: .\templates\news.html:24 .\templates\post.html:17 .\templates\user.html:43
+msgid "Edit"
+msgstr "Редактировать"
+
+#: .\templates\news.html:25 .\templates\post.html:18
+#: .\templates\post_delete.html:13 .\templates\post_delete.html:14
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\templates\news.html:31 .\templates\post.html:24
+msgid "Categories"
+msgstr "Категории"
+
+#: .\templates\news.html:32 .\templates\post.html:25 .\templates\user.html:13
+msgid "Author"
+msgstr "Автор"
+
+#: .\templates\news.html:33 .\templates\post.html:26
+msgid "Added"
+msgstr "Добавлено"
+
+#: .\templates\news.html:38
+msgid "Nothing found for your request"
+msgstr "По вашему запросу ничего не найдено"
+
+#: .\templates\post.html:32
+msgid "Comments"
+msgstr "Комментарии"
+
+#: .\templates\post_delete.html:7
+msgid "Deleting"
+msgstr "Удаление"
+
+#: .\templates\post_edit.html:7
+msgid "Editing"
+msgstr "Редактирование"
+
+#: .\templates\post_edit.html:14
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\templates\user.html:17
+msgid "First Name"
+msgstr "Имя"
+
+#: .\templates\user.html:21
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: .\templates\user.html:29
+msgid "Change"
+msgstr "Изменить"
+
+#: .\templates\user.html:33
+msgid "Create news"
+msgstr "Создать новость"
+
+#: .\templates\user.html:34
+msgid "Create paper"
+msgstr "Создать статью"
+
+#: .\templates\user.html:39
+msgid "Become author"
+msgstr "Стать автором"
+
+#: .\templates\user.html:44
+msgid "Change password"
+msgstr "Изменить пароль"

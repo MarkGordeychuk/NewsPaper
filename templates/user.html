@@ -1,5 +1,6 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
@@ -9,15 +10,15 @@
 {% block content %}
   <table class="text-start mb-5">
     <tr><td>
-      {% if is_author %}<strong>Автор</strong>{% endif %}
+      {% if is_author %}<strong>{% trans 'Author' %}</strong>{% endif %}
       {{ user.username }}
     </td></tr>
     <tr>
-      <td>Имя:</td>
+      <td>{% trans 'First Name' %}:</td>
       <td>{{ user.first_name }}</td>
     </tr>
     <tr>
-      <td>Фамилия:</td>
+      <td>{% trans 'Last Name' %}:</td>
       <td>{{ user.last_name }}</td>
     </tr>
   </table>
@@ -25,23 +26,23 @@
     <form method="post" action="{% url 'news_subscribe_category' %}" >
       {% csrf_token %}
       <p class="text-start">{{ subscribe_form }}</p>
-      <p class="text-start mb-5"><input type="submit" value="Изменить"></p>
+      <p class="text-start mb-5"><input type="submit" value="{% trans 'Change' %}"></p>
     </form>
     {% if is_author %}
       <p class="text-start">
-        <a href="{% url 'news_ne_create' %}"><button>Создать новость</button></a>
-        <a href="{% url 'news_pa_create' %}"><button>Создать статью</button></a>
+        <a href="{% url 'news_ne_create' %}"><button>{% trans 'Create news' %}</button></a>
+        <a href="{% url 'news_pa_create' %}"><button>{% trans 'Create paper' %}</button></a>
       </p>
     {% else %}
       <form class="text-start" method="post" action="{% url 'account_become_author' %}">
         {% csrf_token %}
-        <input type="submit" value="Стать автором">
+        <input type="submit" value="{% trans 'Become author' %}">
       </form>
     {% endif %}
     <p class="text-start">
-      <a href="{% url 'accounts_update' user.pk %}">Изменить</a>
-      <a href="{% url 'account_change_password' %}">Сменить пароль</a>
-      <a href="{% url 'account_logout' %}?next={{ request.path }}">Выйти</a>
+      <a href="{% url 'accounts_update' user.pk %}">{% trans 'Edit' %}</a>
+      <a href="{% url 'account_change_password' %}">{% trans 'Change password' %}</a>
+      <a href="{% url 'account_logout' %}?next={{ request.path }}">{% trans 'Log Out' %}</a>
     </p>
   {% endif %}
 {% endblock content %}

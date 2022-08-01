@@ -1,5 +1,6 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
@@ -13,22 +14,22 @@
       <p class="card-text text-start">{{ post.content|censor }}</p>
       {% if post.author.user == request.user %}
         <p class="card-text text-end">
-          <a href="{{ post.get_update_url }}">Редактировать</a>
-          <a href="{{ post.get_delete_url }}">Удалить</a>
+          <a href="{{ post.get_update_url }}">{% trans 'Edit' %}</a>
+          <a href="{{ post.get_delete_url }}">{% trans 'Delete' %}</a>
         </p>
       {% endif %}
     </div>
     <div class="card-footer text-end">
       <small class="text-muted">
-        Категории: {{ post.category.all|join:', ' }}.
-        Автор: <a href="{% url 'accounts' post.author.user.pk %}">{{ post.author.user|name_lastname }}</a>.
-        Добавлено {{ post.date_in|date:'d-m-Y в H:i:s' }}.
+        {% trans 'Categories' %}: {{ post.category.all|join:', ' }}.
+        {% trans 'Author' %}: <a href="{% url 'accounts' post.author.user.pk %}">{{ post.author.user|name_lastname }}</a>.
+        {% trans 'Added' %} {{ post.date_in|date:'d-m-Y H:i:s' }}.
       </small>
     </div>
   </div>
   {% if post.comment_set.exists %}
     <div class="card mx-5 text-start">
-      <div class="card-header">Комментарии</div>
+      <div class="card-header">{% trans 'Comments' %}</div>
         <ul class="list-group list-group-flush">
           {% for comment in post.comment_set.all %}
             <li class="list-group-item">

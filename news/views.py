@@ -5,6 +5,9 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
+from django.utils import timezone
+
+import pytz
 
 from .models import Post, Author
 from .filters import PostFilter
@@ -137,6 +140,16 @@ class PostDelete(PostChanger, DeleteView):
 
 class IndexView(TemplateView):
     template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['timezones'] = pytz.common_timezones
+        return context
+
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/')
+
 
 
 @login_required

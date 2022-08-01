@@ -1,5 +1,7 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
+{% load tz %}
 {% load cache %}
 {% load custom_filters %}
 
@@ -12,13 +14,27 @@ NewsPaper
 <h1><a href="/news/">News</a></h1>
 <h1><a href="/papers/">Papers</a></h1>
 {% endcache %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <label for="timezone">Time zone:</label>
+  <select name="timezone">
+    {% for tz in timezones %}
+    <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>
+    {% endfor %}
+    </select>
+  <input type="submit" value="Set">
+</form>
+{{ TIME_ZONE }}
+{{ CURRENT_TIME }}
+
 <p>
   {% if request.user.is_authenticated %}
-    Вы вошли как <a href="{% url 'accounts' request.user.pk %}">{{ request.user.username }}</a>.
-    <a href="/accounts/logout/?next=/">Выйти</a>
+    {% trans 'You are logged in as' %} <a href="{% url 'accounts' request.user.pk %}">{{ request.user.username }}</a>.
+    <a href="/accounts/logout/?next=/">{% trans 'Log Out' %}</a>
   {% else %}
-    <a href="/accounts/login/?next=/">Войти</a>
-    <a href="/accounts/signup/?next=/">Зарегистрироваться</a>
+    <a href="/accounts/login/?next=/">{% trans 'Log In' %}</a>
+    <a href="/accounts/signup/?next=/">{% trans 'Register' %}</a>
   {% endif %}
 </p>
 {% endblock content %}

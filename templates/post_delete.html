@@ -1,15 +1,16 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
-Удаление
+{% trans 'Deleting' %}
 {% endblock title %}
 
 {% block content %}
   <form action="" method="post" class="mb-3">
     {% csrf_token %}
-    <p>Удаляем "{{ object.title }}"?</p>
-    <input type="submit" value="Удалить" />
+    <p>{% trans 'Delete' %} "{{ object.title }}"?</p>
+    <input type="submit" value="{% trans 'Delete' %}" />
   </form>
 {% endblock content %}

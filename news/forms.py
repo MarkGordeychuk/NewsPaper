@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 from .models import Post, Category
 
@@ -17,6 +18,12 @@ class PostForm(forms.ModelForm):
             'content',
         ]
 
+        labels = {
+            'category': _('Category'),
+            'title': _('Title'),
+            'content': _('Content'),
+        }
+
 
 class SubscribeCategoryForm(forms.Form):
-    categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all(), label='Подписки', required=False)
+    categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all(), label=_('Subscribes'), required=False)

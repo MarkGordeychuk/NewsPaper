@@ -1,5 +1,6 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 {% load custom_tags %}
 
@@ -10,7 +11,7 @@
 {% block content %}
   <form action="" method="get" class="mb-3">
     {{ filterset.form.as_p }}
-    <input type="submit" value="Найти" />
+    <input type="submit" value="{% trans 'Search' %}" />
   </form>
   {% for post in posts %}
     <div class="card mb-3">
@@ -18,23 +19,23 @@
       <div class="card-body">
         <p class="card-text text-start">{{ post.content|censor|truncatechars:20 }}</p>
         <p class="card-text text-end">
-          <a href="{{ post.get_absolute_url }}" class="card-link">Читать</a>
+          <a href="{{ post.get_absolute_url }}" class="card-link">{% trans 'Read' %}</a>
           {% if post.author.user == request.user %}
-            <a href="{{ post.get_update_url }}">Редактировать</a>
-            <a href="{{ post.get_delete_url }}">Удалить</a>
+            <a href="{{ post.get_update_url }}">{% trans 'Edit' %}</a>
+            <a href="{{ post.get_delete_url }}">{% trans 'Delete' %}</a>
           {% endif %}
         </p>
       </div>
       <div class="card-footer text-end">
         <small class="text-muted">
-          Категории: {{ post.category.all|join:', ' }}.
-          Автор: <a href="{% url 'accounts' post.author.user.pk %}" class="card-link">{{ post.author.user|name_lastname }}</a>.
-          Добавлено {{ post.date_in|date:'d-m-Y в H:i:s' }}.
+          {% trans 'Categories' %}: {{ post.category.all|join:', ' }}.
+          {% trans 'Author' %}: <a href="{% url 'accounts' post.author.user.pk %}" class="card-link">{{ post.author.user|name_lastname }}</a>.
+          {% trans 'Added' %} {{ post.date_in|date:'d-m-Y H:i:s' }}.
         </small>
       </div>
     </div>
   {% empty %}
-    <h1>По вашему запросу ничего не найдено.</h1>
+    <h1>{% trans 'Nothing found for your request' %}.</h1>
   {% endfor %}
   {% if paginator.num_pages > 1 %}
     <p>
